@@ -1,0 +1,22 @@
+#home{
+  width: 100% !important;
+}
+.card{
+  width: 300px !important;
+  margin: 20px;
+}
+.div2{
+  /* width: 90%; */
+  margin: auto  ;
+  align-items: center;
+  justify-content: space-between;
+}
+.div3{
+  margin: auto;
+  width: 100%;
+  /* display: flex !important; */
+  justify-content: space-around;
+}
+.div1, .div2, .div3{
+  width: 90%;
+}

@@ -31,7 +31,7 @@ export const fetchCountries = createAsyncThunk(
   "countrySlice/fetchCountries",
   async (_, thunkAPI) => {
     const url = "https://restcountries.com/v3.1/all";
-    return await fetchFaqData(url, thunkAPI);
+    return await fetchCountryData(url, thunkAPI);
   }
 );
 
