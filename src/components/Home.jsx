@@ -12,6 +12,7 @@ function Home() {
   const [countryData, setcountryData] = useState([]);
   const [country, setcountry] = useState('')
   const [message, setmessage] = useState('')
+  const [dark, setdark] = useState('light')
   useEffect(() => {
     dispatch(fetchCountries());
     setcountryData(countries.data);
@@ -44,16 +45,19 @@ function Home() {
     navigate(`/fulldetails/${name}`)
 
   }
+  const handleChangeMode = () =>{
+    setdark('dark')
+  }
 
   return (
     <>
-      <div className="" id="home">
+      <div className={`home ${dark}`}>
         <Navbar/>
         <div className="mt-5 d-flex div2">
           <input type="text" placeholder="Search for a country" id="count" onChange={(e) => searchCountry(e.target.value.toLowerCase())}/>
           <div class="dropdown">
             <button
-              class="btn btn-secondary dropdown-toggle"
+              class="dropdown-toggle"
               type="button"
               id="dropdownMenuButton1"
               data-bs-toggle="dropdown"
@@ -108,19 +112,19 @@ function Home() {
         <div>{message}</div>
         <div className="div3 row">
           {countryData?.map((index, val) => (
-            <div class="card col-lg-3" onClick={ () => handleFullDetails(index)}>
+            <div className ={`card col-lg-3 shadow ${dark}`} onClick={ () => handleFullDetails(index)}>
               <img src={index.flags.png} class="" alt="..." />
               <div class="card-body">
-                <h5 class="card-title my-4">{index.name.common}</h5>
+                <h5 class=" my-4 title">{index.name.common}</h5>
                 <p>
-                  <span>Population: </span>
+                  <span className="subTitle">Population: </span>
                   {index.population}
                 </p>
                 <p>
-                  <span>Region: </span> {index.region}
+                  <span className="subTitle">Region: </span> {index.region}
                 </p>
                 <p>
-                  <span>Capital: </span>
+                  <span className="subTitle">Capital: </span>
                   {index.capital}
                 </p>
               </div>

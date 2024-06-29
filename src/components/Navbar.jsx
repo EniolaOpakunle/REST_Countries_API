@@ -2,11 +2,11 @@ import React from "react";
 
 function Navbar() {
   return (
-    <nav class="navbar navbar-light bg-light p-fixed">
+    <nav class="navbar navbar-light  p-fixed shadow-sm">
       <div class="container-fluid div1">
         <a class="navbar-brand mb-0 h1">Where in the world?</a>
         <form class="d-flex">
-          <button class="btn btn-outline-dark h1" type="submit">
+          <button class="" type="submit">
             Dark Mode
           </button>
         </form>
