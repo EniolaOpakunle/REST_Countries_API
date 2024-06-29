@@ -1,17 +1,26 @@
 #home{
   width: 100% !important;
 }
-.card{
+#home .card{
   width: 300px !important;
   margin: 20px;
+  border-radius: 5px !important;
 }
-.div2{
+#home .card img{
+  margin-left: -12px !important;
+  width: 300px !important;
+  border-radius: 5px 5px 0 0 !important;
+  /* width: 100% !important; */
+  height: 200px !important;
+  /* width: 300px; */
+}
+#home .div2{
   /* width: 90%; */
   margin: auto  ;
   align-items: center;
   justify-content: space-between;
 }
-.div3{
+#home .div3{
   margin: auto;
   width: 100%;
   /* display: flex !important; */
@@ -19,4 +28,23 @@
 }
 .div1, .div2, .div3{
   width: 90%;
+}
+
+.fullDetails .detailsDiv{
+  display: flex;
+  width: 85%;
+  margin: auto;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 130px !important;
+}
+.fullDetails .detailsDiv img{
+  height: 350px !important;
+}
+.fullDetails .detailsDiv .title{
+  font-size: 24px;
+  font-weight: 700;
+}
+.fullDetails .subTitle{
+  font-weight: 600;
 }

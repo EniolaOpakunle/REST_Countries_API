@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { fetchCountries } from "../Redux/countrySlice";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import Navbar from "./Navbar";
 
 function Home() {
   const dispatch = useDispatch();
@@ -47,16 +48,7 @@ function Home() {
   return (
     <>
       <div className="" id="home">
-        <nav class="navbar navbar-light bg-light">
-          <div class="container-fluid div1">
-            <a class="navbar-brand mb-0 h1">Where in the world?</a>
-            <form class="d-flex">
-              <button class="btn btn-outline-dark h1" type="submit">
-                Dark Mode
-              </button>
-            </form>
-          </div>
-        </nav>
+        <Navbar/>
         <div className="mt-5 d-flex div2">
           <input type="text" placeholder="Search for a country" id="count" onChange={(e) => searchCountry(e.target.value.toLowerCase())}/>
           <div class="dropdown">
@@ -117,18 +109,18 @@ function Home() {
         <div className="div3 row">
           {countryData?.map((index, val) => (
             <div class="card col-lg-3" onClick={ () => handleFullDetails(index)}>
-              <img src={index.flags.png} class="card-img-top mt-2" alt="..." />
+              <img src={index.flags.png} class="" alt="..." />
               <div class="card-body">
-                <h5 class="card-title">{index.name.common}</h5>
+                <h5 class="card-title my-4">{index.name.common}</h5>
                 <p>
-                  <span>Population:</span>
+                  <span>Population: </span>
                   {index.population}
                 </p>
                 <p>
-                  <span>Region:</span> {index.region}
+                  <span>Region: </span> {index.region}
                 </p>
                 <p>
-                  <span>Capital:</span>
+                  <span>Capital: </span>
                   {index.capital}
                 </p>
               </div>
