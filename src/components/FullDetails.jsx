@@ -6,7 +6,7 @@ import { fetchCountries } from "../Redux/countrySlice";
 import Navbar from "./Navbar";
 
 function FullDetails() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const { name } = useParams();
   const dispatch = useDispatch();
   const countries = useSelector((state) => state.countries);
@@ -21,14 +21,16 @@ function FullDetails() {
     console.log(found);
   }, [dispatch]);
   const handleExit = () => {
-    navigate('/home')
+    navigate("/home");
   };
 
   return (
     <div className="fullDetails">
       <Navbar />
       <div className="mt-5 btnDiv">
-        <button className="shadow-sm" onClick={() => handleExit()}>Go back</button>
+        <button className="shadow-sm" onClick={() => handleExit()}>
+          Go back
+        </button>
       </div>
       <div className="">
         {country?.map((index, val) => (
@@ -74,8 +76,15 @@ function FullDetails() {
                   </p>
                 </div>
               </div>
-              <div className="mt-5 subTitle">
-                <p>Border Countries:</p>
+              <div className="mt-5 subTitle row borderDiv">
+                <div className="col-lg-3">
+                  <p>Border Countries:</p>
+                </div>
+                <div className="col-lg-7">
+                  <button className="shadow-sm mx-3">France</button>
+                  <button className="shadow-sm mx-3">France</button>
+                  <button className="shadow-sm mx-3">France</button>
+                </div>
               </div>
             </div>
           </div>

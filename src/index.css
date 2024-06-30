@@ -11,3 +11,9 @@ button{
   font-size: 24px;
   font-weight: 700;
 }
+input{
+  width: 250px;
+  height: 40px;
+  border-radius: 5px;
+  border: thin solid white;
+}

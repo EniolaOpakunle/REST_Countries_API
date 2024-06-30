@@ -5,7 +5,7 @@
 }
 .home.light{
   width: 100% !important;
-  background-color: white;
+  background-color: hsl(0, 0%, 98%);
   color: black;
 }
 .home .card.dark{
@@ -20,7 +20,7 @@
   margin: 50px 20px;
   border-radius: 5px !important;
   background-color: white;
-  color: black;
+  color: hsl(200, 15%, 8%);
 }
 .home .card img{
   margin-left: -13px !important;
@@ -32,26 +32,34 @@
 }
 .home .div2{
   /* width: 90%; */
-  margin: auto  ;
+  margin: auto ;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-between !important;
 }
 .home .div3{
   margin: auto;
-  width: 100%;
+  /* width: 100%; */
   /* display: flex !important; */
   justify-content: space-around;
 }
+.home nav{
+  background-color: white;
+}
 .div1, .div2, .div3{
   width: 90%;
+  /* margin: auto !important; */
 }
-
+.fullDetails{
+  background-color: hsl(0, 0%, 98%);
+  color: hsl(200, 15%, 8%);
+  height: auto;
+}
 .fullDetails .btnDiv{
   width: 90%;
   margin: auto;
 }
-.fullDetails button{
-
+.fullDetails nav{
+  background-color: white;
 }
 .fullDetails .detailsDiv{
   display: flex;
@@ -67,4 +75,11 @@
 .fullDetails .detailsDiv .title{
   font-size: 24px;
   font-weight: 700;
+}
+
+@media only screen and (max-width: 450px){
+  .home{
+    width: 100% !important;
+  }
+  
 }

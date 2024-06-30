@@ -52,10 +52,18 @@ function Home() {
   return (
     <>
       <div className={`home ${dark}`}>
-        <Navbar/>
-        <div className="mt-5 d-flex div2">
-          <input type="text" placeholder="Search for a country" id="count" onChange={(e) => searchCountry(e.target.value.toLowerCase())}/>
-          <div class="dropdown">
+        <div className="sticky-top">
+            <Navbar/>
+        </div>
+        <div className="mt-5 row div2">
+          <input 
+          type="text" 
+          className="shadow-sm col-lg-3"
+          placeholder="Search for a country" 
+          id="count" 
+          onChange={(e) => searchCountry(e.target.value.toLowerCase())}
+          />
+          <div class="dropdown col-lg-2">
             <button
               class="dropdown-toggle"
               type="button"
