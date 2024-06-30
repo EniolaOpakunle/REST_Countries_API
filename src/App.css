@@ -23,8 +23,8 @@
   color: hsl(200, 15%, 8%);
 }
 .home .card img{
-  margin-left: -13px !important;
-  width: 300px !important;
+  margin-left: -12px !important;
+  width: 298px !important;
   border-radius: 5px 5px 0 0 !important;
   /* width: 100% !important; */
   height: 200px !important;

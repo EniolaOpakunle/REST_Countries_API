@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { fetchCountries } from "../Redux/countrySlice";
-import Navbar from "./Navbar";
 
 function FullDetails() {
   const navigate = useNavigate();
@@ -26,7 +25,18 @@ function FullDetails() {
 
   return (
     <div className="fullDetails">
-      <Navbar />
+      <div>
+        <nav class="navbar navbar-light  p-fixed shadow-sm">
+          <div class="container-fluid div1">
+            <a class="navbar-brand mb-0 h1">Where in the world?</a>
+            <form class="d-flex">
+              <button class="" type="submit">
+                Dark Mode
+              </button>
+            </form>
+          </div>
+        </nav>
+      </div>
       <div className="mt-5 btnDiv">
         <button className="shadow-sm" onClick={() => handleExit()}>
           Go back
@@ -66,13 +76,17 @@ function FullDetails() {
                     <span className="subTitle">Top Level Domain:</span>{" "}
                     {index.tld}
                   </p>
-                  <p className="">
-                    <span className="subTitle">Top Level Domain:</span>{" "}
-                    {index.tld}
-                  </p>
-                  <p className="">
-                    <span className="subTitle">Top Level Domain:</span>{" "}
-                    {index.tld}
+                  {Object.keys(index.currencies).map((key) => (
+                    <p>
+                      <span className="subTitle">Currencies: </span>
+                      {index.currencies[key].name}
+                    </p>
+                  ))}
+                  <p className="d-flex">
+                    <span className="subTitle">Languages: </span>
+                    {Object.keys(index.languages).map((key) => (
+                      <span>{index.languages[key] }</span>
+                    ))}
                   </p>
                 </div>
               </div>

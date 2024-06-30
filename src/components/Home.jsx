@@ -3,16 +3,15 @@ import { useDispatch } from "react-redux";
 import { fetchCountries } from "../Redux/countrySlice";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import Navbar from "./Navbar";
 
 function Home() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const countries = useSelector((state) => state.countries);
   const [countryData, setcountryData] = useState([]);
-  const [country, setcountry] = useState('')
-  const [message, setmessage] = useState('')
-  const [dark, setdark] = useState('light')
+  const [country, setcountry] = useState("");
+  const [message, setmessage] = useState("");
+  const [dark, setdark] = useState("light");
   useEffect(() => {
     dispatch(fetchCountries());
     setcountryData(countries.data);
@@ -28,40 +27,45 @@ function Home() {
     console.log(found);
     setcountryData(found);
   };
-  const searchCountry = (val) =>{
-    let found = countries.data.filter((index) => index.name.common.toLowerCase().includes(val))
-    // if(!found){
-    //     setmessage('country not found')
-    // }else{
-    //     setmessage('')
-    // }
-    setcountryData(found)
-    console.log(found)
-  }
-  const handleFullDetails = (index) =>{
-    let found = countries.data.find((ind) => ind == index )
-    console.log(index.name)
-    const name = index.name.common.toLowerCase()
-    navigate(`/fulldetails/${name}`)
-
-  }
-  const handleChangeMode = () =>{
-    setdark('dark')
-  }
+  const searchCountry = (val) => {
+    let found = countries.data.filter((index) =>
+      index.name.common.toLowerCase().includes(val)
+    );
+    setcountryData(found);
+    console.log(found);
+  };
+  const handleFullDetails = (index) => {
+    let found = countries.data.find((ind) => ind == index);
+    console.log(index.name);
+    const name = index.name.common.toLowerCase();
+    navigate(`/fulldetails/${name}`);
+  };
+  const handleChangeMode = () => {
+    setdark("dark");
+  };
 
   return (
     <>
       <div className={`home ${dark}`}>
         <div className="sticky-top">
-            <Navbar/>
+          <nav class="navbar navbar-light  p-fixed shadow-sm">
+            <div class="container-fluid div1">
+              <a class="navbar-brand mb-0 h1">Where in the world?</a>
+              <form class="d-flex">
+                <button class="" type="submit">
+                  Dark Mode
+                </button>
+              </form>
+            </div>
+          </nav>
         </div>
         <div className="mt-5 row div2">
-          <input 
-          type="text" 
-          className="shadow-sm col-lg-3"
-          placeholder="Search for a country" 
-          id="count" 
-          onChange={(e) => searchCountry(e.target.value.toLowerCase())}
+          <input
+            type="text"
+            className="shadow-sm col-lg-3"
+            placeholder="Search for a country"
+            id="count"
+            onChange={(e) => searchCountry(e.target.value.toLowerCase())}
           />
           <div class="dropdown col-lg-2">
             <button
@@ -120,7 +124,10 @@ function Home() {
         <div>{message}</div>
         <div className="div3 row">
           {countryData?.map((index, val) => (
-            <div className ={`card col-lg-3 shadow ${dark}`} onClick={ () => handleFullDetails(index)}>
+            <div
+              className={`card col-lg-3 shadow ${dark}`}
+              onClick={() => handleFullDetails(index)}
+            >
               <img src={index.flags.png} class="" alt="..." />
               <div class="card-body">
                 <h5 class=" my-4 title">{index.name.common}</h5>
