@@ -1,7 +1,7 @@
 .home.dark{
   width: 100% !important;
-  background-color: black;
-  color: white;
+  background-color: hsl(207, 26%, 17%);
+  color: white !important;
 }
 .home.light{
   width: 100% !important;
@@ -12,8 +12,9 @@
   width: 300px !important;
   margin: 50px 20px;
   border-radius: 5px !important;
-  background-color: black;
+  background-color: hsl(209, 23%, 22%);
   color: white;
+  border: none;
 }
 .home .card.light{
   width: 300px !important;
@@ -21,10 +22,16 @@
   border-radius: 5px !important;
   background-color: white;
   color: hsl(200, 15%, 8%);
+  transition: transform 0.3s ease;
+  border:  none;
+}
+.home .card:hover{
+  transform: scale(1.1);
+  /* box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); */
 }
 .home .card img{
   margin-left: -12px !important;
-  width: 298px !important;
+  width: 299px !important;
   border-radius: 5px 5px 0 0 !important;
   /* width: 100% !important; */
   height: 200px !important;
@@ -42,8 +49,15 @@
   /* display: flex !important; */
   justify-content: space-around;
 }
-.home nav{
+.home nav.light{
   background-color: white;
+}
+.home nav.dark{
+  background-color:hsl(209, 23%, 22%) ;
+  color: white;
+}
+.home .navbar-brand.dark{
+  color: white;
 }
 .div1, .div2, .div3{
   width: 90%;

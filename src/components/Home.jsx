@@ -12,6 +12,7 @@ function Home() {
   const [country, setcountry] = useState("");
   const [message, setmessage] = useState("");
   const [dark, setdark] = useState("light");
+  const [mode, setmode] = useState('Dark')
   useEffect(() => {
     dispatch(fetchCountries());
     setcountryData(countries.data);
@@ -41,35 +42,42 @@ function Home() {
     navigate(`/fulldetails/${name}`);
   };
   const handleChangeMode = () => {
-    setdark("dark");
+    if (dark === "dark"){
+      setdark('light')
+      setmode("Dark")
+    }else{
+      setdark('dark')
+      setmode("Light")
+    }
   };
+  console.log(dark);
 
   return (
     <>
       <div className={`home ${dark}`}>
         <div className="sticky-top">
-          <nav class="navbar navbar-light  p-fixed shadow-sm">
+          <nav class={`navbar navbar-light  p-fixed shadow-sm ${dark}`}>
             <div class="container-fluid div1">
-              <a class="navbar-brand mb-0 h1">Where in the world?</a>
-              <form class="d-flex">
-                <button class="" type="submit">
-                  Dark Mode
+              <a class={`navbar-brand mb-0 h1 ${dark}`}>Where in the world?</a>
+                <button 
+                className={`${dark}`}
+                onClick={()=>handleChangeMode()}>
+                  {mode} mode
                 </button>
-              </form>
             </div>
           </nav>
         </div>
         <div className="mt-5 row div2">
           <input
             type="text"
-            className="shadow-sm col-lg-3"
+            className={`shadow-sm col-lg-3 ${dark}`}
             placeholder="Search for a country"
             id="count"
             onChange={(e) => searchCountry(e.target.value.toLowerCase())}
           />
           <div class="dropdown col-lg-2">
             <button
-              class="dropdown-toggle"
+              class={`dropdown-toggle ${dark}`}
               type="button"
               id="dropdownMenuButton1"
               data-bs-toggle="dropdown"
@@ -77,10 +85,10 @@ function Home() {
             >
               Filter by Region
             </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <ul class={`dropdown-menu ${dark}`} aria-labelledby="dropdownMenuButton1">
               <li>
                 <button
-                  class="dropdown-item"
+                  className={`dropdown-item ${dark}`}
                   onClick={() => filterRegion("Africa")}
                 >
                   Africa
@@ -88,7 +96,7 @@ function Home() {
               </li>
               <li>
                 <button
-                  class="dropdown-item"
+                  className={`dropdown-item ${dark}`}
                   onClick={() => filterRegion("Americas")}
                 >
                   America
@@ -96,7 +104,7 @@ function Home() {
               </li>
               <li>
                 <button
-                  class="dropdown-item"
+                  className={`dropdown-item ${dark}`}
                   onClick={() => filterRegion("Asia")}
                 >
                   Asia
@@ -104,7 +112,7 @@ function Home() {
               </li>
               <li>
                 <button
-                  class="dropdown-item"
+                  className={`dropdown-item ${dark}`}
                   onClick={() => filterRegion("Europe")}
                 >
                   Europe
@@ -112,7 +120,7 @@ function Home() {
               </li>
               <li>
                 <button
-                  class="dropdown-item"
+                  className={`dropdown-item ${dark}`}
                   onClick={() => filterRegion("Oceania")}
                 >
                   Oceania
