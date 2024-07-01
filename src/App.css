@@ -49,31 +49,36 @@
   /* display: flex !important; */
   justify-content: space-around;
 }
-.home nav.light{
+nav.light{
   background-color: white;
 }
-.home nav.dark{
+nav.dark{
   background-color:hsl(209, 23%, 22%) ;
   color: white;
 }
-.home .navbar-brand.dark{
+.navbar-brand.dark{
   color: white;
+}
+.home ul.dark{
+  background-color: hsl(209, 23%, 22%);
 }
 .div1, .div2, .div3{
   width: 90%;
   /* margin: auto !important; */
 }
-.fullDetails{
+.fullDetails.light{
   background-color: hsl(0, 0%, 98%);
   color: hsl(200, 15%, 8%);
-  height: auto;
+  min-height: 100vh !important;
+}
+.fullDetails.dark{
+  background-color: hsl(207, 26%, 17%);
+  color: white;
+  min-height: 100vh !important;
 }
 .fullDetails .btnDiv{
   width: 90%;
   margin: auto;
-}
-.fullDetails nav{
-  background-color: white;
 }
 .fullDetails .detailsDiv{
   display: flex;

@@ -11,8 +11,11 @@ button.dark{
   color: white;
   /* box-shadow: 0.5px 0.5px 0.5px grey; */
 }
-button:hover{
-  /* background-color:hsl(209, 23%, 22%) ; */
+button.dark:hover{
+  background-color: hsl(209, 23%, 22%) !important ;
+}
+button.light:hover{
+  background-color: white !important ;
 }
 .subTitle{
   font-weight: 600;

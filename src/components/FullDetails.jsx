@@ -10,6 +10,8 @@ function FullDetails() {
   const dispatch = useDispatch();
   const countries = useSelector((state) => state.countries);
   const [country, setcountry] = useState([]);
+  const [dark, setdark] = useState("light");
+  const [mode, setmode] = useState('Dark')
   useEffect(() => {
     dispatch(fetchCountries());
     console.log(name);
@@ -22,23 +24,30 @@ function FullDetails() {
   const handleExit = () => {
     navigate("/home");
   };
+  const handleChangeMode = () => {
+    if (dark === "dark"){
+      setdark('light')
+      setmode("Dark")
+    }else{
+      setdark('dark')
+      setmode("Light")
+    }
+  };
 
   return (
-    <div className="fullDetails">
+    <div className={`fullDetails ${dark}`}>
       <div>
-        <nav class="navbar navbar-light  p-fixed shadow-sm">
+        <nav class={`navbar navbar-light p-fixed shadow-sm ${dark}`}>
           <div class="container-fluid div1">
-            <a class="navbar-brand mb-0 h1">Where in the world?</a>
-            <form class="d-flex">
-              <button class="" type="submit">
-                Dark Mode
+            <a class={`navbar-brand mb-0 h1 ${dark}`}>Where in the world?</a>
+              <button className={`${dark}`} onClick={() => handleChangeMode()}>
+                {mode} Mode
               </button>
-            </form>
           </div>
         </nav>
       </div>
       <div className="mt-5 btnDiv">
-        <button className="shadow-sm" onClick={() => handleExit()}>
+        <button className={`shadow-sm ${dark}`} onClick={() => handleExit()}>
           Go back
         </button>
       </div>
@@ -95,9 +104,9 @@ function FullDetails() {
                   <p>Border Countries:</p>
                 </div>
                 <div className="col-lg-7">
-                  <button className="shadow-sm mx-3">France</button>
-                  <button className="shadow-sm mx-3">France</button>
-                  <button className="shadow-sm mx-3">France</button>
+                  <button className={`shadow-sm mx-3 ${dark}`}>France</button>
+                  <button className={`shadow-sm mx-3 ${dark}`}>France</button>
+                  <button className={`shadow-sm mx-3 ${dark}`}>France</button>
                 </div>
               </div>
             </div>
