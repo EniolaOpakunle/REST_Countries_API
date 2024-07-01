@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { fetchCountries } from "../Redux/countrySlice";
+import Borders from "./Border";
 
 function FullDetails() {
   const navigate = useNavigate();
@@ -12,12 +13,13 @@ function FullDetails() {
   const [country, setcountry] = useState([]);
   const [dark, setdark] = useState("light");
   const [mode, setmode] = useState('Dark')
+  console.log(countries)
   useEffect(() => {
     dispatch(fetchCountries());
     console.log(name);
-    let found = countries.data.filter((index) =>
+    let found = countries?.countries?.data?.filter((index) =>
       index.name.common.toLowerCase().includes(name)
-    );
+    );  
     setcountry(found);
     console.log(found);
   }, [dispatch]);
@@ -98,36 +100,22 @@ function FullDetails() {
                     ))}
                   </p>
                 </div>
-              </div>
-              <div className="mt-5 subTitle row borderDiv">
+                <div className="mt-5 subTitle row borderDiv">
                 <div className="col-lg-3">
                   <p>Border Countries:</p>
                 </div>
-                <div className="col-lg-7">
+                <div className="col-lg-7 d-flex">
+                  <span></span>
+                  <Borders borders={index.borders}/>
+                  {/* <button className={`shadow-sm mx-3 ${dark}`}></button>
                   <button className={`shadow-sm mx-3 ${dark}`}>France</button>
-                  <button className={`shadow-sm mx-3 ${dark}`}>France</button>
-                  <button className={`shadow-sm mx-3 ${dark}`}>France</button>
+                  <button className={`shadow-sm mx-3 ${dark}`}>France</button> */}
                 </div>
               </div>
+              </div>
+              
             </div>
           </div>
-          // <div class="card col-lg-3">
-          //   <img src={index.flags.png} class="card-img-top mt-2" alt="..." />
-          //   <div class="card-body">
-          //     <h5 class="card-title">{index.name.common}</h5>
-          //     <p>
-          //       <span>Population: </span>
-          //       {index.population}
-          //     </p>
-          //     <p>
-          //       <span>Region: </span> {index.region}
-          //     </p>
-          //     <p>
-          //       <span>Capital: </span>
-          //       {index.capital}
-          //     </p>
-          //   </div>
-          // </div>
         ))}
       </div>
     </div>

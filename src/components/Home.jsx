@@ -15,8 +15,8 @@ function Home() {
   const [mode, setmode] = useState('Dark')
   useEffect(() => {
     dispatch(fetchCountries());
-    setcountryData(countries.data);
-    console.log(countryData);
+    setcountryData(countries?.countries?.data);
+    console.log(countries?.countries?.data);
   }, [dispatch]);
 
   if (countries.isLoading) {
@@ -24,19 +24,19 @@ function Home() {
     console.log(true);
   }
   const filterRegion = (region) => {
-    let found = countries.data.filter((index) => index.region == region);
+    let found = countries?.countries.data.filter((index) => index.region == region);
     console.log(found);
     setcountryData(found);
   };
   const searchCountry = (val) => {
-    let found = countries.data.filter((index) =>
+    let found = countries?.countries.data.filter((index) =>
       index.name.common.toLowerCase().includes(val)
     );
     setcountryData(found);
     console.log(found);
   };
   const handleFullDetails = (index) => {
-    let found = countries.data.find((ind) => ind == index);
+    let found = countries?.countries.data.find((ind) => ind == index);
     console.log(index.name);
     const name = index.name.common.toLowerCase();
     navigate(`/fulldetails/${name}`);
