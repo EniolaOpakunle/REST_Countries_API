@@ -19,7 +19,7 @@ function Home() {
     console.log(countries?.countries?.data);
   }, [dispatch]);
 
-  if (countries.isLoading) {
+  if (countries.countries.isLoading) {
     return <div className="loadingDiv text-center">Loading...</div>;
     console.log(true);
   }

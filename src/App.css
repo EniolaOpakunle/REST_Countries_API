@@ -2,6 +2,7 @@
   width: 100% !important;
   background-color: hsl(207, 26%, 17%);
   color: white !important;
+  min-height: 100vh !important;
 }
 .home.light{
   width: 100% !important;
@@ -36,6 +37,11 @@
   /* width: 100% !important; */
   height: 200px !important;
   /* width: 300px; */
+}
+.loadingDiv{
+  font-size: 32px;
+  font-weight: 700;
+  color: hsl(209, 23%, 22%);
 }
 .home .div2{
   /* width: 90%; */
