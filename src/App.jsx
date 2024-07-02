@@ -7,7 +7,7 @@ import FullDetails from './components/FullDetails'
 function App() {
   return (
     <Routes>
-      <Route path='/home' element = {<Home/>}/>
+      <Route path='/' element = {<Home/>}/>
       <Route path='/fulldetails/:name' element= {<FullDetails/>}/>
     </Routes>
   )
