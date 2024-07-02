@@ -22,7 +22,13 @@ function Home() {
   }, [countries]);
 
   if (countries.countries.isLoading) {
-    return <div className="loadingDiv text-center">Loading...</div>;
+    return (
+      <div className={`spinnerDiv d-flex justify-content-center ${currentMode}`}>
+        <div class={`spinner-border ${!darkMode ? "text-dark" : "text-light"}`} role="status">
+          <span class="sr-only"></span>
+        </div>
+      </div>
+    );
   }
 
   const filterRegion = (region) => {

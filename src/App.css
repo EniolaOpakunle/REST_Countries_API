@@ -59,6 +59,18 @@
   /* display: flex !important; */
   justify-content: space-around;
 }
+.spinnerDiv.dark{
+  background-color: hsl(209, 23%, 22%);
+  min-height: 100vh;
+  align-items: center;
+  
+}
+.spinnerDiv.light{
+  background-color: white;
+  min-height: 100vh;
+  align-items: center;
+}
+
 nav.light{
   background-color: white;
 }
