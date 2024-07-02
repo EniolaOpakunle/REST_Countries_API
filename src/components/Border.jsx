@@ -30,7 +30,7 @@ const navigate = useNavigate();
         <div>
         {borderCountries.map((border, index) => (
             // <Link to={`/fulldetails/${border.toLowerCase()}`} key={index}>
-                  <button className='mx-1'onClick={() => handleFullDetails(border)}>{border}</button>
+                  <button className='mx-1'onClick={() => handleFullDetails(border)} key={index}>{border}</button>
                 //  </Link>
             ))}
         </div>
