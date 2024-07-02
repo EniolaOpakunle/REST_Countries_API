@@ -4,10 +4,10 @@ function Spinner({ darkMode, currentMode }) {
   return (
     <div className={`spinnerDiv d-flex justify-content-center ${currentMode}`}>
       <div
-        class={`spinner-border ${!darkMode ? "dark" : "light"}`}
+        className={`spinner-border ${!darkMode ? "dark" : "light"}`}
         role="status"
       >
-        <span class="sr-only"></span>
+        <span className="sr-only"></span>
       </div>
     </div>
   );

@@ -24,6 +24,7 @@ function FullDetails() {
         (index) => index.name.common.toLowerCase() === name
       );
       setcountry(found);
+      
     }
   }, [countries, name]);
 
@@ -47,7 +48,7 @@ function FullDetails() {
       </div>
       <div className="">
         {country?.map((index, val) => (
-          <div className="row detailsDiv py-5">
+          <div className="row detailsDiv py-5 " >
             <div className="col-lg-5 d-flex justify-content-left">
               <img src={index.flags.png} alt="" className="w-100 h-100" />
             </div>
@@ -74,7 +75,7 @@ function FullDetails() {
                     <span className="subTitle">Capital:</span> {index.capital}
                   </p>
                 </div>
-                <div className="col-lg-6 text-right">
+                <div className="col-lg-6 text-right" >
                   <p className="">
                     <span className="subTitle">Top Level Domain:</span>{" "}
                     {index.tld}

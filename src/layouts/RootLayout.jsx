@@ -16,10 +16,10 @@ function RootLayout() {
   const currentMode = darkMode ? "dark" : "light";
   return (
     <div>
-      <div>
-        <nav class={`navbar navbar-light p-fixed shadow-sm ${currentMode}`}>
-          <div class="container-fluid div1">
-            <a class={`navbar-brand mb-0 h1 ${currentMode}`}>
+      <div className="sticky-top">
+        <nav className={`navbar navbar-light p-fixed shadow-sm ${currentMode}`}>
+          <div className="container-fluid div1">
+            <a className={`navbar-brand mb-0 h1 ${currentMode}`}>
               Where in the world?
             </a>
             <button className={currentMode} onClick={() => handleChangeMode()}>

@@ -3,6 +3,7 @@ import "./App.css";
 import { Route, Routes } from "react-router-dom";
 import RootLayout from "./layouts/RootLayout";
 import { lazy } from "react";
+import Spinner from "./utils/Spinner";
 const Home = lazy(() => import("./components/Home"));
 const FullDetails = lazy(() => import("./components/FullDetails"));
 
@@ -13,7 +14,7 @@ function App() {
         <Route
           path="/"
           element={
-            <Suspense fallback="loading...">
+            <Suspense fallback={<Spinner/>}>
               <Home />
             </Suspense>
           }
@@ -21,7 +22,7 @@ function App() {
         <Route
           path="/fulldetails/:name"
           element={
-            <Suspense fallback="loading...">
+            <Suspense fallback={<Spinner/>}>
               <FullDetails />
             </Suspense>
           }
