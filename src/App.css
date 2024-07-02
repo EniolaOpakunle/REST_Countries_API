@@ -45,13 +45,16 @@
   color: hsl(209, 23%, 22%);
 }
 .home .div2{
-  /* width: 90%; */
+  padding: 0 20px 0 15px;
+  /* width: 88%; */
+  display: flex;
   margin: auto ;
   align-items: center;
   justify-content: space-between !important;
 }
 .home .div3{
   margin: auto;
+  padding: 0 !important;
   /* width: 100%; */
   /* display: flex !important; */
   justify-content: space-around;
@@ -85,7 +88,7 @@ nav.dark{
   min-height: 100vh !important;
 }
 .fullDetails .btnDiv{
-  width: 90%;
+  width: 88.5%;
   margin: auto;
 }
 .fullDetails .detailsDiv{
@@ -94,7 +97,7 @@ nav.dark{
   margin: auto !important;
   align-items: center;
   justify-content: space-between;
-  margin-top: 10px !important;
+  margin-top: 0px !important;
 }
 .fullDetails .detailsDiv img{
   height: 400px !important;

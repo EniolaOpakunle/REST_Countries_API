@@ -1,28 +1,27 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useOutletContext, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { fetchCountries } from "../Redux/countrySlice";
 import Borders from "./Border";
 
 function FullDetails() {
+  const { handleChangeMode, currentMode } = useOutletContext();
   const navigate = useNavigate();
   const { name } = useParams();
   const dispatch = useDispatch();
   const countries = useSelector((state) => state.countries);
   const [country, setcountry] = useState([]);
-  const [dark, setdark] = useState("light");
-  const [mode, setmode] = useState('Dark')
-  console.log(countries)
+  console.log(countries);
   useEffect(() => {
     dispatch(fetchCountries());
   }, [dispatch]);
 
   useEffect(() => {
     if (countries?.countries?.data) {
-      let found = countries?.countries?.data?.filter((index) =>
-        index.name.common.toLowerCase() === name
-      );  
+      let found = countries?.countries?.data?.filter(
+        (index) => index.name.common.toLowerCase() === name
+      );
       setcountry(found);
     }
   }, [countries, name]);
@@ -30,30 +29,14 @@ function FullDetails() {
   const handleExit = () => {
     navigate("/");
   };
-  const handleChangeMode = () => {
-    if (dark === "dark"){
-      setdark('light')
-      setmode("Dark")
-    }else{
-      setdark('dark')
-      setmode("Light")
-    }
-  };
 
   return (
-    <div className={`fullDetails ${dark}`}>
-      <div>
-        <nav class={`navbar navbar-light p-fixed shadow-sm ${dark}`}>
-          <div class="container-fluid div1">
-            <a class={`navbar-brand mb-0 h1 ${dark}`}>Where in the world?</a>
-              <button className={`${dark}`} onClick={() => handleChangeMode()}>
-                {mode} Mode
-              </button>
-          </div>
-        </nav>
-      </div>
-      <div className="mt-5 btnDiv">
-        <button className={`shadow-sm ${dark}`} onClick={() => handleExit()}>
+    <div className={`fullDetails ${currentMode}`}>
+      <div className="pt-5 btnDiv">
+        <button
+          className={`shadow-sm ${currentMode}`}
+          onClick={() => handleExit()}
+        >
           Go back
         </button>
       </div>
@@ -99,20 +82,19 @@ function FullDetails() {
                   ))}
                   <p className="d-flex">
                     <span className="subTitle">Languages:</span>
-                    {Object.values(index.languages).join(', ')}
+                    {Object.values(index.languages).join(", ")}
                   </p>
                 </div>
                 <div className="mt-5 subTitle row borderDiv">
-                <div className="col-lg-3">
-                  <p>Border Countries:</p>
-                </div>
-                <div className="col-lg-8 d-flex">
-                  <span></span>
-                  <Borders borders={index.borders}/>
+                  <div className="col-lg-3">
+                    <p>Border Countries:</p>
+                  </div>
+                  <div className="col-lg-8 d-flex">
+                    <span></span>
+                    <Borders borders={index.borders} />
+                  </div>
                 </div>
               </div>
-              </div>
-              
             </div>
           </div>
         ))}

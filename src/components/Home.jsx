@@ -1,17 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCountries } from "../Redux/countrySlice";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useOutletContext } from "react-router-dom";
 
 function Home() {
+  const { darkMode, handleChangeMode, currentMode } = useOutletContext();
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const countries = useSelector((state) => state.countries);
   const [countryData, setCountryData] = useState([]);
   const [country, setCountry] = useState("");
   const [message, setMessage] = useState("");
-  const [dark, setDark] = useState("light");
-  const [mode, setMode] = useState("Dark");
   const [findMode, setFindMode] = useState(false);
 
   useEffect(() => {
@@ -51,40 +50,20 @@ function Home() {
     navigate(`/fulldetails/${name}`);
   };
 
-  const handleChangeMode = () => {
-    if (dark === "dark") {
-      setDark("light");
-      setMode("Dark");
-    } else {
-      setDark("dark");
-      setMode("Light");
-    }
-  };
-
   return (
     <>
-      <div className={`home ${dark}`}>
-        <div className="sticky-top">
-          <nav className={`navbar navbar-light p-fixed shadow-sm ${dark}`}>
-            <div className="container-fluid div1">
-              <a className={`navbar-brand mb-0 h1 ${dark}`}>Where in the world?</a>
-              <button className={`${dark}`} onClick={handleChangeMode}>
-                {mode} mode
-              </button>
-            </div>
-          </nav>
-        </div>
-        <div className="mt-5 row div2">
+      <div className={`home ${currentMode}`}>
+        <div className="pt-5 div2">
           <input
             type="text"
-            className={`shadow-sm col-lg-3 ${dark}`}
+            className={`shadow-sm ${currentMode}`}
             placeholder="Search for a country"
             id="count"
             onChange={(e) => searchCountry(e.target.value.toLowerCase())}
           />
-          <div className="dropdown col-lg-2">
+          <div className="dropdown">
             <button
-              className={`dropdown-toggle ${dark}`}
+              className={`dropdown-toggle ${currentMode}`}
               type="button"
               id="dropdownMenuButton1"
               data-bs-toggle="dropdown"
@@ -92,10 +71,13 @@ function Home() {
             >
               Filter by Region
             </button>
-            <ul className={`dropdown-menu ${dark}`} aria-labelledby="dropdownMenuButton1">
+            <ul
+              className={`dropdown-menu ${currentMode}`}
+              aria-labelledby="dropdownMenuButton1"
+            >
               <li>
                 <button
-                  className={`dropdown-item ${dark}`}
+                  className={`dropdown-item ${currentMode}`}
                   onClick={() => filterRegion("Africa")}
                 >
                   Africa
@@ -103,7 +85,7 @@ function Home() {
               </li>
               <li>
                 <button
-                  className={`dropdown-item ${dark}`}
+                  className={`dropdown-item ${currentMode}`}
                   onClick={() => filterRegion("Americas")}
                 >
                   America
@@ -111,7 +93,7 @@ function Home() {
               </li>
               <li>
                 <button
-                  className={`dropdown-item ${dark}`}
+                  className={`dropdown-item ${currentMode}`}
                   onClick={() => filterRegion("Asia")}
                 >
                   Asia
@@ -119,7 +101,7 @@ function Home() {
               </li>
               <li>
                 <button
-                  className={`dropdown-item ${dark}`}
+                  className={`dropdown-item ${currentMode}`}
                   onClick={() => filterRegion("Europe")}
                 >
                   Europe
@@ -127,7 +109,7 @@ function Home() {
               </li>
               <li>
                 <button
-                  className={`dropdown-item ${dark}`}
+                  className={`dropdown-item ${currentMode}`}
                   onClick={() => filterRegion("Oceania")}
                 >
                   Oceania
@@ -140,7 +122,7 @@ function Home() {
           <div className="div3 row">
             {countryData.map((index) => (
               <div
-                className={`card col-lg-3 shadow ${dark}`}
+                className={`card col-lg-3 shadow ${currentMode}`}
                 onClick={() => handleFullDetails(index)}
                 key={index.name.common}
               >
