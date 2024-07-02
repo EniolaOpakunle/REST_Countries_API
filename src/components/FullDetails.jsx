@@ -4,9 +4,10 @@ import { useNavigate, useOutletContext, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { fetchCountries } from "../Redux/countrySlice";
 import Borders from "./Border";
+import Spinner from "../utils/Spinner";
 
 function FullDetails() {
-  const { handleChangeMode, currentMode } = useOutletContext();
+  const { darkMode, handleChangeMode, currentMode } = useOutletContext();
   const navigate = useNavigate();
   const { name } = useParams();
   const dispatch = useDispatch();
@@ -25,6 +26,10 @@ function FullDetails() {
       setcountry(found);
     }
   }, [countries, name]);
+
+  if (countries.countries.isLoading) {
+    return <Spinner currentMode={currentMode} darkMode={darkMode} />;
+  }
 
   const handleExit = () => {
     navigate("/");

@@ -1,16 +1,31 @@
-import React from "react";
-import Home from "./components/Home";
+import React, { Suspense } from "react";
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
-import FullDetails from "./components/FullDetails";
 import RootLayout from "./layouts/RootLayout";
+import { lazy } from "react";
+const Home = lazy(() => import("./components/Home"));
+const FullDetails = lazy(() => import("./components/FullDetails"));
 
 function App() {
   return (
     <Routes>
       <Route element={<RootLayout />}>
-        <Route path="/" element={<Home />} />
-        <Route path="/fulldetails/:name" element={<FullDetails />} />
+        <Route
+          path="/"
+          element={
+            <Suspense fallback="loading...">
+              <Home />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/fulldetails/:name"
+          element={
+            <Suspense fallback="loading...">
+              <FullDetails />
+            </Suspense>
+          }
+        />
       </Route>
     </Routes>
   );

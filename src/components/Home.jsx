@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCountries } from "../Redux/countrySlice";
 import { useNavigate, useOutletContext } from "react-router-dom";
+import Spinner from "../utils/Spinner";
 
 function Home() {
   const { darkMode, handleChangeMode, currentMode } = useOutletContext();
@@ -22,13 +23,7 @@ function Home() {
   }, [countries]);
 
   if (countries.countries.isLoading) {
-    return (
-      <div className={`spinnerDiv d-flex justify-content-center ${currentMode}`}>
-        <div class={`spinner-border ${!darkMode ? "text-dark" : "text-light"}`} role="status">
-          <span class="sr-only"></span>
-        </div>
-      </div>
-    );
+    return <Spinner currentMode={currentMode} darkMode={darkMode} />;
   }
 
   const filterRegion = (region) => {
