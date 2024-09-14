@@ -119,6 +119,12 @@ nav.dark{
   font-weight: 700;
 }
 
+.map-container {
+  height: 400px;
+}
+
+
+
 @media only screen and (max-width: 450px){
   .home{
     width: 100% !important;

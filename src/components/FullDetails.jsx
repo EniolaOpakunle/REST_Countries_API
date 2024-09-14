@@ -5,6 +5,8 @@ import { useState, useEffect } from "react";
 import { fetchCountries } from "../Redux/countrySlice";
 import Borders from "./Border";
 import Spinner from "../utils/Spinner";
+import Map from "./Map";
+
 
 function FullDetails() {
   const { darkMode, handleChangeMode, currentMode } = useOutletContext();
@@ -48,7 +50,8 @@ function FullDetails() {
       </div>
       <div className="">
         {country?.map((index, val) => (
-          <div className="row detailsDiv py-5 " >
+          <div>
+            <div className="row detailsDiv py-5 " >
             <div className="col-lg-5 d-flex justify-content-left">
               <img src={index.flags.png} alt="" className="w-100 h-100" />
             </div>
@@ -103,8 +106,14 @@ function FullDetails() {
               </div>
             </div>
           </div>
+          {/* Map area */}
+          <Map locationName={index.name.common}/>
+          </div>
+           
         ))}
+       
       </div>
+      
     </div>
   );
 }
