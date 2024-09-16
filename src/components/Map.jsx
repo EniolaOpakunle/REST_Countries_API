@@ -13,7 +13,7 @@ export default function Map({ locationName }) {
   const map = useRef(null);
   const [lng, setLng] = useState(0);
   const [lat, setLat] = useState(0);
-  const [zoom, setZoom] = useState(13);
+  const [zoom, setZoom] = useState(5);
 
   // Function to fetch coordinates from Mapbox Geocoding API
   const getCoordinates = async (locationName) => {
